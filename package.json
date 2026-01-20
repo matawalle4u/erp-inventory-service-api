@@ -1,5 +1,20 @@
 {
+  "name": "erp-system",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "services/*",
+    "shared"
+  ], 
+
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down"
+  },
   "dependencies": {
+    "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^11.1.12"
   }
 }
