@@ -1,6 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ClientProxy } from '@nestjs/microservices';
+import { Observable } from 'rxjs';
 
 @Controller()
 export class AppController {
@@ -10,7 +11,7 @@ export class AppController {
   ) {}
 
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getHello(): Observable<number> {
+    return this.client.send({ cmd: 'sum' }, [1, 2, 3, 4, 5]);
   }
 }
